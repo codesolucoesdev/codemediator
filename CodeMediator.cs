@@ -3,19 +3,23 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CodeMediator;
 
-public sealed class CodeMediator(IServiceProvider serviceProvider) : ICodeMediator
+public sealed class CodeMediator : ICodeMediator
 {
+    private readonly IServiceProvider serviceProvider;
+
+    public CodeMediator(IServiceProvider services) => serviceProvider = services;
+
     public async Task PublishAsync<TNotification>(TNotification notification, CancellationToken cancellationToken = default)
         where TNotification : ICodeNotification
     {
         var handlerType = typeof(ICodeNotificationHandler<>).MakeGenericType(notification.GetType());
-        var handlers = serviceProvider.GetServices(handlerType);        
+        var handlers = serviceProvider.GetServices(handlerType);
 
         foreach (var handler in handlers)
         {
             await (Task)handlerType
                 .GetMethod("Handle")!
-                .Invoke(handler, [notification, cancellationToken])!;
+                .Invoke(handler, new object[] { notification, cancellationToken })!;
         }
     }
 
@@ -27,6 +31,6 @@ public sealed class CodeMediator(IServiceProvider serviceProvider) : ICodeMediat
             ? throw new InvalidOperationException($"Handler {handlerType} not found")
             : await (Task<TResponse>)handlerType
             .GetMethod("Handle")!
-            .Invoke(handler, [request, cancellationToken])!;
+            .Invoke(handler, new object[] { request, cancellationToken })!;
     }
 }

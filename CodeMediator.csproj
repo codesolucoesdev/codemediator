@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Title>CodeMediator</Title>
@@ -10,12 +10,13 @@
     <Copyright>Copyright © 2025 Code - Soluções em Tecnologia. Todos os direitos reservados.</Copyright>
     <PackageProjectUrl>https://github.com/codesolucoesdev/codemediator/</PackageProjectUrl>
     <PackageIcon>Logo Code-21.png</PackageIcon>
-    <RepositoryUrl>https://github.com/codesolucoesdev/codemediator/</RepositoryUrl>
+    <RepositoryUrl>https://github.com/codesolucoesdev/codemediator.git</RepositoryUrl>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <AssemblyVersion>2025.146.0.2505</AssemblyVersion>
     <FileVersion>2025.146.0.2505</FileVersion>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
