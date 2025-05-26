@@ -9,7 +9,7 @@ public sealed class CodeMediator(IServiceProvider serviceProvider) : ICodeMediat
         where TNotification : ICodeNotification
     {
         var handlerType = typeof(ICodeNotificationHandler<>).MakeGenericType(notification.GetType());
-        var handlers = serviceProvider.GetServices(handlerType);
+        var handlers = serviceProvider.GetServices(handlerType);        
 
         foreach (var handler in handlers)
         {
