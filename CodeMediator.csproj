@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Title>CodeMediator</Title>
+    <Authors>Code - Soluções em Tecnologia</Authors>
+    <Description>Uma alternativa gratuita ao MediatR</Description>
+    <Copyright>Copyright © 2025 Code - Soluções em Tecnologia. Todos os direitos reservados.</Copyright>
+    <PackageProjectUrl>https://github.com/codesolucoesdev/codemediator/</PackageProjectUrl>
+    <PackageIcon>Logo Code-21.png</PackageIcon>
+    <RepositoryUrl>https://github.com/codesolucoesdev/codemediator/</RepositoryUrl>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <AssemblyVersion>2025.146.0.2505</AssemblyVersion>
+    <FileVersion>2025.146.0.2505</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\..\..\..\..\..\drive\Marketing\Identidade Visual\Imagens png\Logo Code-21.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.5" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
