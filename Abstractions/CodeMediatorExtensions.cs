@@ -6,11 +6,32 @@ namespace CodeMediator.Abstractions;
 
 public static class CodeMediatorExtensions
 {
-    public static IServiceCollection AddCodeMeditor(this IServiceCollection services) => services.AddSingleton<ICodeMediator, CodeMediator>();
+    public enum CodeMediatorMode { Scoped, Transient, Singleton }
 
-    public static IServiceCollection AddCodeMeditor(this IServiceCollection services, Assembly assembly)
+    public static IServiceCollection AddCodeMediator(this IServiceCollection services,
+        CodeMediatorMode mode = CodeMediatorMode.Scoped)
     {
-        AddCodeMeditor(services);
+        switch (mode)
+        {
+            case CodeMediatorMode.Scoped:
+            default:
+                services.AddScoped<ICodeMediator, CodeMediator>();
+                break;
+            case CodeMediatorMode.Transient:
+                services.AddTransient<ICodeMediator, CodeMediator>();
+                break;
+            case CodeMediatorMode.Singleton:
+                services.AddSingleton<ICodeMediator, CodeMediator>();
+                break;
+        }
+
+        return services;
+    }
+
+    public static IServiceCollection AddCodeMediator(this IServiceCollection services, Assembly assembly,
+        CodeMediatorMode mode = CodeMediatorMode.Scoped)
+    {
+        AddCodeMediator(services, mode);
 
         // Registrando todos os IQueryHandler<>
         var handlerTypes = assembly.GetTypes()
